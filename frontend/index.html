@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 2 - Docker Compose</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        .card { padding: 20px; border: 1px solid #ccc; display: inline-block; border-radius: 8px; background: #f9f9f9; }
+        .success { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Лабораторная работа №2</h2>
+        <p id="response" class="success">Загрузка данных с бэкенда...</p>
+    </div>
+
+    <script>
+        fetch('/api/data')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('response').innerText = data.message;
+            })
+            .catch(err => {
+                document.getElementById('response').innerText = 'Ошибка соединения с бэкендом: ' + err;
+                document.getElementById('response').style.color = 'red';
+            });
+    </script>
+</body>
+</html>
